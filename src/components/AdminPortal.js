@@ -9,17 +9,36 @@ export default function AdminPortal() {
   const setQuestionStates = useQuizStore((state) => state.setQuestionStates);
 
   const [selectedSample, setSelectedSample] = useState("");
+  const [loadError, setLoadError] = useState(null);
 
   const handleLoadSample = async () => {
+    setLoadError(null);
     if (!selectedSample) return;
+
     try {
       const res = await fetch(`/${selectedSample}`);
       const data = await res.json();
-      setQuestions(data.questions);
-      setQuestionStates(data.questionStates);
-      navigate("/dashboard");
+
+      console.log("📥 Loaded sample data:", data);
+      console.log("📥 Questions:", data.questions?.length);
+      console.log("📥 Question States:", data.questionStates?.length);
+      console.log("📥 Sample question:", data.questions?.[0]);
+
+      if (
+        Array.isArray(data.questions) &&
+        Array.isArray(data.questionStates) &&
+        data.questions.length === data.questionStates.length
+      ) {
+        setQuestions(data.questions);
+        setQuestionStates(data.questionStates);
+        navigate("/dashboard");
+      } else {
+        console.error("❌ Invalid sample structure or length mismatch");
+        setLoadError("Invalid sample format. Please check the file.");
+      }
     } catch (err) {
       console.error("❌ Failed to load sample test data:", err);
+      setLoadError("Failed to load sample file.");
     }
   };
 
@@ -52,10 +71,18 @@ export default function AdminPortal() {
               className="w-full p-2 rounded border border-gray-300"
             >
               <option value="">Select a sample file...</option>
+              <option value="testResults_sampleMinimal.json">🎯 Sample Mini Exam</option>
               <option value="testResults_strong.json">✅ Strong Performance</option>
               <option value="testResults_mixed.json">⚖️ Mixed Performance</option>
               <option value="testResults_weakPlanning.json">🔴 Weak Planning Focus</option>
+              <option value="testResults_withUserAnswers.json">🧠 Sample with User Answers</option>
+<option value="testResults_verifiedSample.json">✅ Verified Sample Exam</option>
+
             </select>
+
+            {loadError && (
+              <div className="text-red-600 text-sm">{loadError}</div>
+            )}
 
             <button
               onClick={handleLoadSample}

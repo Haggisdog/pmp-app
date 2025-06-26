@@ -1,0 +1,216 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "phase": "Initiating",
+      "question": "What is the purpose of a project charter?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "B",
+      "userAnswer": "B"
+    },
+    {
+      "id": 2,
+      "phase": "Initiating",
+      "question": "Who authorizes the project?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "A",
+      "userAnswer": "A"
+    },
+    {
+      "id": 3,
+      "phase": "Initiating",
+      "question": "Which is part of initiating?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "D",
+      "userAnswer": "D"
+    },
+    {
+      "id": 4,
+      "phase": "Planning",
+      "question": "What tool is used to decompose deliverables?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "C",
+      "userAnswer": "C"
+    },
+    {
+      "id": 5,
+      "phase": "Planning",
+      "question": "What defines the project schedule?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "A",
+      "userAnswer": "A"
+    },
+    {
+      "id": 6,
+      "phase": "Planning",
+      "question": "Which plan addresses risks?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "B",
+      "userAnswer": "B"
+    },
+    {
+      "id": 7,
+      "phase": "Executing",
+      "question": "Who manages the team performance?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "D",
+      "userAnswer": "D"
+    },
+    {
+      "id": 8,
+      "phase": "Executing",
+      "question": "What is done during execution?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "A",
+      "userAnswer": "A"
+    },
+    {
+      "id": 9,
+      "phase": "Executing",
+      "question": "Which is a deliverable of execution?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "C",
+      "userAnswer": "C"
+    },
+    {
+      "id": 10,
+      "phase": "Monitoring",
+      "question": "Which compares actuals vs baseline?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "B",
+      "userAnswer": "B"
+    },
+    {
+      "id": 11,
+      "phase": "Monitoring",
+      "question": "What reports quality status?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "C",
+      "userAnswer": "C"
+    },
+    {
+      "id": 12,
+      "phase": "Monitoring",
+      "question": "What process tracks change?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "A",
+      "userAnswer": null
+    },
+    {
+      "id": 13,
+      "phase": "Closing",
+      "question": "What document is finalized at close?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "D",
+      "userAnswer": "B"
+    },
+    {
+      "id": 14,
+      "phase": "Closing",
+      "question": "Who signs off project completion?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "A",
+      "userAnswer": "D"
+    },
+    {
+      "id": 15,
+      "phase": "Closing",
+      "question": "Which output is part of closing?",
+      "options": {
+        "A": "Option A",
+        "B": "Option B",
+        "C": "Option C",
+        "D": "Option D"
+      },
+      "answer": "B",
+      "userAnswer": "B"
+    }
+  ],
+  "questionStates": [
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "answered",
+    "skipped",
+    "incorrect",
+    "incorrect",
+    "answered"
+  ]
+}

@@ -1,7 +1,7 @@
 // File: /src/pages/UserDashboard.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuiz } from "../components/quiz/QuizProvider"; // 👈 updated hook location
+import { useQuiz } from "../components/quiz/QuizProvider";
 import PerformanceDashboard from "../components/PerformanceDashboard";
 import {
   PieChart,
@@ -21,7 +21,21 @@ export default function UserDashboard() {
   const {
     questions,
     questionStates,
-  } = useQuiz(); // 👈 updated from useQuizStore()
+  } = useQuiz();
+
+  // Defensive guard: check if data is missing or empty
+  if (
+    !questions ||
+    !questionStates ||
+    questions.length === 0 ||
+    questionStates.length === 0
+  ) {
+    return (
+      <div className="p-6 text-xl text-center text-red-600 font-sharemono">
+        ⚠️ No quiz data found. Please complete a quiz first.
+      </div>
+    );
+  }
 
   const counts = {
     answered: 0,
@@ -103,28 +117,17 @@ export default function UserDashboard() {
   };
 
   const handleRetake = () => {
-  const quizLength = localStorage.getItem("quizLength") || "10";
-  const isMockExam = localStorage.getItem("isMockExam") || "false";
+    const quizLength = localStorage.getItem("quizLength") || "10";
+    const isMockExam = localStorage.getItem("isMockExam") || "false";
 
-  // Save values again (optional, for clarity)
-  localStorage.setItem("quizLength", quizLength);
-  localStorage.setItem("isMockExam", isMockExam);
+    localStorage.setItem("quizLength", quizLength);
+    localStorage.setItem("isMockExam", isMockExam);
 
-  // Navigate home, then push quiz to fully reinitialize context
-  navigate("/", { replace: true });
-  setTimeout(() => {
-    navigate("/quiz");
-  }, 50); // slight delay to allow unmount
-};
-
-
-  if (!questions.length || !questionStates.length) {
-    return (
-      <div className="p-6 text-xl text-center text-red-600 font-sharemono">
-        ⚠️ No quiz data found. Please complete a quiz first.
-      </div>
-    );
-  }
+    navigate("/", { replace: true });
+    setTimeout(() => {
+      navigate("/quiz");
+    }, 50);
+  };
 
   const phasePerformance = getPhasePerformance();
 

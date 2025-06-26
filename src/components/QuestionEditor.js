@@ -12,6 +12,8 @@ export default function QuestionEditor() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [showWipOnly, setShowWipOnly] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null);
+  const [hasChanges, setHasChanges] = useState(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -42,10 +44,36 @@ export default function QuestionEditor() {
   };
 
   const saveToSupabase = async (question) => {
+    setSaveStatus("saving");
     const { data, error } = await supabase
       .from("questions")
       .upsert(question, { onConflict: ["id"] });
-    if (error) console.error("❌ Failed to save question:", error);
+    if (error) {
+      console.error("❌ Failed to save question:", error);
+      setSaveStatus("error");
+    } else {
+      const newQuestion = {
+        id: questions.length + 1,
+        type: "single-response",
+        phase: "",
+        question: "New question",
+        options: {
+          A: "",
+          B: "",
+          C: "",
+          D: "",
+        },
+        answer: "A",
+        explanation: "",
+        status: "wip",
+      };
+      const updated = [...questions, newQuestion];
+      setQuestions(updated);
+      setSelectedIndex(updated.length - 1);
+      setSaveStatus("success");
+      setHasChanges(false);
+      setTimeout(() => setSaveStatus(null), 1500);
+    }
   };
 
   const handleFieldChange = (field, value) => {
@@ -53,7 +81,7 @@ export default function QuestionEditor() {
     updated[selectedIndex][field] = value;
     updated[selectedIndex].status = isQuestionComplete(updated[selectedIndex]) ? undefined : "wip";
     setQuestions(updated);
-    saveToSupabase(updated[selectedIndex]);
+    setHasChanges(true);
   };
 
   const handleOptionChange = (key, value) => {
@@ -63,7 +91,7 @@ export default function QuestionEditor() {
       [key]: value,
     };
     setQuestions(updated);
-    saveToSupabase(updated[selectedIndex]);
+    setHasChanges(true);
   };
 
   const handleAnswerToggle = (key) => {
@@ -82,7 +110,7 @@ export default function QuestionEditor() {
       updated[selectedIndex].answer = key;
     }
     setQuestions(updated);
-    saveToSupabase(updated[selectedIndex]);
+    setHasChanges(true);
   };
 
   const handleAddOption = () => {
@@ -93,7 +121,7 @@ export default function QuestionEditor() {
     );
     updated[selectedIndex].options[nextChar] = "";
     setQuestions(updated);
-    saveToSupabase(updated[selectedIndex]);
+    setHasChanges(true);
   };
 
   const handleAddQuestion = async () => {
@@ -115,7 +143,7 @@ export default function QuestionEditor() {
     const updated = [...questions, newQuestion];
     setQuestions(updated);
     setSelectedIndex(updated.length - 1);
-    await saveToSupabase(newQuestion);
+    await supabase.from("questions").upsert(newQuestion, { onConflict: ["id"] });
   };
 
   const handleDeleteQuestion = async () => {
@@ -129,7 +157,7 @@ export default function QuestionEditor() {
   };
 
   const handleSave = () => {
-    questions.forEach((q) => saveToSupabase(q));
+    saveToSupabase(questions[selectedIndex]);
   };
 
   const handleImportFromJson = async () => {
@@ -247,12 +275,18 @@ export default function QuestionEditor() {
 
         <div>
           <label className="font-bold">Phase:</label>
-          <input
-            type="text"
-            value={current.phase}
+          <select
+            value={current.phase || ""}
             onChange={(e) => handleFieldChange("phase", e.target.value)}
             className="w-full border p-2 rounded"
-          />
+          >
+            <option value="">Select Phase...</option>
+            <option value="Initiating">Initiating</option>
+            <option value="Planning">Planning</option>
+            <option value="Executing">Executing</option>
+            <option value="Monitoring">Monitoring</option>
+            <option value="Closing">Closing</option>
+          </select>
         </div>
 
         <div>
@@ -321,7 +355,7 @@ export default function QuestionEditor() {
           />
         </div>
 
-        <div className="flex gap-4 pt-4">
+        <div className="flex gap-4 pt-4 items-center">
           <button
             onClick={handleDeleteQuestion}
             className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded shadow"
@@ -330,10 +364,13 @@ export default function QuestionEditor() {
           </button>
           <button
             onClick={handleSave}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow"
+            disabled={!hasChanges || saveStatus === "saving"}
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow disabled:opacity-50"
           >
-            🔄 Save to Supabase
+            {saveStatus === "saving" ? "Saving..." : "Save"}
           </button>
+          {saveStatus === "success" && <span className="text-green-600 font-bold">✅ Saved!</span>}
+          {saveStatus === "error" && <span className="text-red-600 font-bold">❌ Error</span>}
           <button
             onClick={handleImportFromJson}
             className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded shadow"
