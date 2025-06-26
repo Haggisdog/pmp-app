@@ -1,0 +1,37 @@
+/* ✅ Import custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code&family=IBM+Plex+Mono&family=Major+Mono+Display&family=Share+Tech+Mono&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Global body style */
+body {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.875rem; /* Tailwind's text-sm (14px) */
+  background-color: #fef3c7;
+}
+
+/* ✅ Pixel-perfect images */
+img.pixelated {
+  image-rendering: pixelated;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid black;
+  white-space: nowrap;
+  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+  font-family: monospace;
+  max-width: 100%;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 8ch }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}

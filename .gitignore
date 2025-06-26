@@ -1,0 +1,15 @@
+# .gitignore
+
+# Node & Build
+node_modules/
+.cache/
+dist/
+build/
+
+# Environment & Logs
+.env
+*.log
+
+# OS Junk
+.DS_Store
+Thumbs.db

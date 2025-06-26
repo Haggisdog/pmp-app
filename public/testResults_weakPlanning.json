@@ -1,0 +1,71 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "phase": "Initiating",
+      "question": "What defines the project start?",
+      "options": {
+        "A": "Kickoff",
+        "B": "Charter",
+        "C": "Scope",
+        "D": "Plan"
+      },
+      "answer": "B"
+    },
+    {
+      "id": 2,
+      "phase": "Planning",
+      "question": "Which defines work into manageable pieces?",
+      "options": {
+        "A": "Gantt Chart",
+        "B": "Network Diagram",
+        "C": "WBS",
+        "D": "PERT"
+      },
+      "answer": "C"
+    },
+    {
+      "id": 3,
+      "phase": "Planning",
+      "question": "Which process creates the cost baseline?",
+      "options": {
+        "A": "Estimate Costs",
+        "B": "Control Costs",
+        "C": "Determine Budget",
+        "D": "Manage Costs"
+      },
+      "answer": "C"
+    },
+    {
+      "id": 4,
+      "phase": "Executing",
+      "question": "What is used to lead the team?",
+      "options": {
+        "A": "Meetings",
+        "B": "Work Authorization",
+        "C": "Leadership",
+        "D": "Team Charter"
+      },
+      "answer": "C"
+    },
+    {
+      "id": 5,
+      "phase": "Closing",
+      "question": "What document is finalized at close?",
+      "options": {
+        "A": "Risk Register",
+        "B": "Schedule",
+        "C": "Lessons Learned",
+        "D": "Stakeholder Register"
+      },
+      "answer": "C"
+    }
+  ],
+  "questionStates": [
+    "answered",
+    "incorrect",
+    "incorrect",
+    "answered",
+    "skipped"
+  ]
+}

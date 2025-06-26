@@ -1,0 +1,71 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "phase": "Initiating",
+      "question": "Who identifies stakeholders?",
+      "options": {
+        "A": "PM",
+        "B": "Sponsor",
+        "C": "Business Analyst",
+        "D": "Functional Manager"
+      },
+      "answer": "A"
+    },
+    {
+      "id": 2,
+      "phase": "Planning",
+      "question": "What is created during scope definition?",
+      "options": {
+        "A": "Work Breakdown Structure",
+        "B": "Risk Register",
+        "C": "Budget",
+        "D": "Team Charter"
+      },
+      "answer": "A"
+    },
+    {
+      "id": 3,
+      "phase": "Executing",
+      "question": "What tool manages team conflict?",
+      "options": {
+        "A": "RACI",
+        "B": "Responsibility Matrix",
+        "C": "Ground Rules",
+        "D": "Milestone Chart"
+      },
+      "answer": "C"
+    },
+    {
+      "id": 4,
+      "phase": "Monitoring",
+      "question": "Which output tracks quality metrics?",
+      "options": {
+        "A": "Quality Report",
+        "B": "Performance Report",
+        "C": "Status Report",
+        "D": "Forecast"
+      },
+      "answer": "A"
+    },
+    {
+      "id": 5,
+      "phase": "Closing",
+      "question": "What is finalized during closing?",
+      "options": {
+        "A": "Procurement",
+        "B": "Schedule",
+        "C": "Stakeholder Engagement",
+        "D": "Contracts"
+      },
+      "answer": "D"
+    }
+  ],
+  "questionStates": [
+    "answered",
+    "incorrect",
+    "answered",
+    "skipped",
+    "incorrect"
+  ]
+}
